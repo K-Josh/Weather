@@ -3,7 +3,7 @@
 }
 
 .weather {
-    width: 39rem;
+    width: 36rem;
     height: 52rem;
     margin: auto;
     margin-top: 4rem;
@@ -32,13 +32,17 @@
 .weather__topbar__input:focus {
     outline: var(--container-bg);
 }
-.weather__topbar__icon {
+.weather__topbar__button {
+    border: none;
+    padding: 0.2rem;
+    outline: none;
     font-size: 2rem;
     display: flex;
     justify-content: center;
     cursor: pointer;
     position: absolute;
     right: 4rem;
-    background-color: #FFF;
-    border-radius: 50px;
+}
+.weather__topbar__icon {
+   
 }

@@ -7,34 +7,44 @@ import axios from 'axios'
 const Weather = () => {
   const navigate = useNavigate()
   const [name, setName] = useState('')
-  const [data, setData] = useState('')
+  const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if(name !== '') {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=5dbc8974e4f7c97578a206c760e4d50f&units=metric`
-      axios.get(apiUrl)
-      .then(res => {
-        setData({...data, 
-          celcius:res.data.main.temp,
-           name:res.data.name, 
-           humidity:res.data.main.humidity,
-           speed:res.data.wind.speed
-        })
-        .catch(err => console.log(err))
-      })
-     navigate.push(`/weather/${name}`)
+      setIsLoading(true)
+      setError(null)
+      try {
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=5dbc8974e4f7c97578a206c760e4d50f&units=metric`;
+        const res = await axios.get(apiUrl);
+        setData({...data,
+          celcius: res.data.main.temp,
+          name: res.data.name,
+          humidity: res.data.main.humidity,
+          speed: res.data.wind.speed
+        });
+      
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }
+  };
+
   return (
-    <div className='weather' id='/'>
+    <div className='weather'>
      <div className='weather__topbar'>
         {/* {open ? } */}
         <input type='text' value={name} onChange={(e)=> setName(e.target.value)} placeholder='Search City...' className='weather__topbar__input'/>
-        <button onClick={handleSearch}>
-         <IoSearchOutline className='weather__topbar__icon' />
-        </button>
-        
+        <button type='submit' className='weather__topbar__button'>
+         <IoSearchOutline onClick={handleSearch} className='weather__topbar__icon' />
+         </button>
      </div>
+     {isLoading && <p>Loading weather data...</p>}
+     {error && <p>Error fetching weather data: {error.message}</p>}
+     {data && (navigate(`/weather/${name}`) )}
     </div>
   )
 }

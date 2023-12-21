@@ -9,14 +9,15 @@ import { useParams } from 'react-router-dom'
 const Home = () => {
   const {name} = useParams()
   const [data, setData] = useState({
-    celcius: 10,
-    name: 'Yaounde',
-    humidity: 10,
-    speed: 2
+    celcius: Number,
+    name: String,
+    humidity: Number,
+    speed: Number,
+    image: ''
   })
   useEffect(()=> {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=5dbc8974e4f7c97578a206c760e4d50f&units=metric`
-    axios.post(apiUrl)
+    axios.get(apiUrl)
     .then(res => {
       setData({...data, 
         celcius:res.data.main.temp,
@@ -29,8 +30,8 @@ const Home = () => {
   }, [])
   return (
     <div className='home'>
-      <div className='home-back'>
-      <a to='/'>
+      <div className='home__back'>
+      <a href='/'>
        <FaCircleArrowLeft className='home__header__left__icon'/>
        </a>
       </div>
@@ -76,7 +77,7 @@ const Home = () => {
           <div className='home__main__btn'>
             <button>
             <p className='home__main__btn__p'>Forecast Report</p>
-            <IoIosArrowUp className='home__header__left__icon'/>
+            <IoIosArrowUp />
             </button>
           </div>
         </div>

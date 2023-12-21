@@ -10,12 +10,19 @@
     background-color: var(--container-bg);
     border-radius: 12px;
 }
+.home__back {
+    padding: 1rem;
+    color: white;
+}
+.home__back a:hover {
+    color: white;
+}
 .home__header {
     display: flex;
     margin: auto;
     justify-content: space-around;
     align-items: center;
-    padding-top: 3rem;
+    padding-top: 1rem;
 }
 .home__header__left {
     display: flex;
@@ -26,6 +33,7 @@
 .home__header__left__icon {
     font-size: 1.6rem;
     cursor: pointer;
+    color: #FFF;
 }
 .home__header__left p {
     font-size: 1.7rem;
