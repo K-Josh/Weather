@@ -1,0 +1,44 @@
+:root {
+    --container-bg: rgba(74,145,225,1);
+}
+
+.weather {
+    width: 39rem;
+    height: 52rem;
+    margin: auto;
+    margin-top: 4rem;
+    background-color: var(--container-bg);
+    border-radius: 12px;
+}
+.weather__topbar {
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    align-items: center;
+    position: relative;
+}
+.weather__topbar__input {
+    width: 80%;
+    height: 4.75rem;
+    box-shadow: -6px 4px 4px rgba(255, 255, 255, 0.10) inset;
+    border-radius: 15px;
+    background: #FFF;
+    border: none;
+    padding-left: 20px;
+    color: #626262;
+    font-size: 20px;
+    font-weight: 400;
+}
+.weather__topbar__input:focus {
+    outline: var(--container-bg);
+}
+.weather__topbar__icon {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    right: 4rem;
+    background-color: #FFF;
+    border-radius: 50px;
+}
