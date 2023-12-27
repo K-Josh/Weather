@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { IoLocationOutline } from 'react-icons/io5'
 import {IoIosArrowDown, IoIosArrowUp} from 'react-icons/io'
 import { FaCircleArrowLeft, FaRegBell} from 'react-icons/fa6'
@@ -38,10 +39,9 @@ const Home = () => {
       return iconMap[mainWeather] || '/Images/sun cloudy.png'; 
     
   };
-  // const API_KEY = process.env.WEATHER_KEY
-
+  
   useEffect(()=> {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=5dbc8974e4f7c97578a206c760e4d50f&units=metric`
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${process.env.WEATHER_KEY}&units=metric`
     axios.get(apiUrl)
     .then((res) => {
       setData({...data, 
@@ -56,7 +56,7 @@ const Home = () => {
     .catch((err) => console.log(err))
     
   }, [data])
-
+  
   
   
  // const getImagePath = (mainWeather) => {

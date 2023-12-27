@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 import { useState } from 'react';
 import './Weather.css'
@@ -20,7 +21,7 @@ const Weather = () => {
       setIsLoading(true)
       setError(null)
       try {
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=5dbc8974e4f7c97578a206c760e4d50f&units=metric`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${process.env.WEATHER_KEY}&units=metric`;
         
         const res = await axios.get(apiUrl);
         setData({...data,
