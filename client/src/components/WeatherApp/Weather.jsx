@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import './Weather.css'
 import { IoSearchOutline } from "react-icons/io5";
@@ -10,6 +11,9 @@ const Weather = () => {
   const [data, setData] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  // const API_KEY=process.env.WEATHER_KEY
+
 
   const handleSearch = async () => {
     if(name !== '') {
@@ -17,12 +21,13 @@ const Weather = () => {
       setError(null)
       try {
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=5dbc8974e4f7c97578a206c760e4d50f&units=metric`;
+        
         const res = await axios.get(apiUrl);
         setData({...data,
           celcius: res.data.main.temp,
           name: res.data.name,
           humidity: res.data.main.humidity,
-          speed: res.data.wind.speed
+          speed: res.data.wind.speed,
         });
       
       } catch (err) {
@@ -42,9 +47,11 @@ const Weather = () => {
          <IoSearchOutline onClick={handleSearch} className='weather__topbar__icon' />
          </button>
      </div>
+     <div className='weather__error'>
      {isLoading && <p>Loading weather data...</p>}
      {error && <p>Error fetching weather data: {error.message}</p>}
-     {data && (navigate(`/weather/${name}`) )}
+     {data && (navigate(`/weather/${name}`) )} 
+     </div> 
     </div>
   )
 }

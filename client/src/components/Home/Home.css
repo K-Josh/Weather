@@ -4,15 +4,23 @@
 
 .home {
     width: 32rem;
-    height: 52rem;
+    height: 60rem;
     margin: auto;
     margin-top: 4rem;
     background-color: var(--container-bg);
     border-radius: 12px;
 }
 .home__back {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     padding: 1rem;
     color: white;
+}
+.home__back p {
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
 }
 .home__back a:hover {
     color: white;
@@ -45,7 +53,8 @@
     gap: 2rem;
 }
 .home__main__image {
-    width: rem;
+    width: 7rem;
+    margin-top: 5rem;
 }
 .home__main__utilities {
     border: 2px solid #FFF;

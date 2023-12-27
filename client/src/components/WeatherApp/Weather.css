@@ -43,6 +43,15 @@
     position: absolute;
     right: 4rem;
 }
-.weather__topbar__icon {
-   
+.weather__error {
+    display: flex;
+    justify-content: center;
+    padding-top: 30vh;
 }
+.weather__error p {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+/* .weather__topbar__icon {
+   
+} */
